@@ -2,6 +2,7 @@
 node_modules/
 /dist
 /public
+TODO.md
 
 # Log files
 npm-debug.log*
