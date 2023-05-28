@@ -1,5 +1,5 @@
 let firstCard = 10;
-let secondCard = 12;
+let secondCard = 10;
 let sum = firstCard + secondCard;
 let hasBlackJack = false;
 let isAlive = true;
@@ -10,6 +10,8 @@ let sumEl = document.getElementById("sum-el");
 // Alternative way to get element from the DOM
 // CSS selector: id - #, class - .
 // let sumEl = document.querySelector("#sum-el");
+
+let cardsEl = document.getElementById("cards-el");
 
 // Handles the button onClick event
 function startGame() {
@@ -24,4 +26,5 @@ function startGame() {
     }
     messageEl.textContent = message;
     sumEl.textContent = "Sum: " + sum;
+    cardsEl.textContent = "Cards " + firstCard + " " + secondCard;
 }
