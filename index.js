@@ -15,27 +15,27 @@ let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
 
 function startGame() {
-    renderGame(secondCard);
+  renderGame(secondCard);
 }
 
 function renderGame(cardNum) {
-    if (sum <= 20) {
-        message = "Do you want to draw a new card?";
-    } else if (sum === 21) {
-        message = "Wohoo! You've got Blackjack!";
-        hasBlackJack = true;
-    } else {
-        message = "You're out of the game!";
-        isAlive = false;
-    }
-    messageEl.textContent = message;
-    sumEl.textContent = "Sum: " + sum;
-    cardMessage += " " + cardNum;
-    cardsEl.textContent = cardMessage;
+  if (sum <= 20) {
+    message = "Do you want to draw a new card?";
+  } else if (sum === 21) {
+    message = "Wohoo! You've got Blackjack!";
+    hasBlackJack = true;
+  } else {
+    message = "You're out of the game!";
+    isAlive = false;
+  }
+  messageEl.textContent = message;
+  sumEl.textContent = "Sum: " + sum;
+  cardMessage += " " + cardNum;
+  cardsEl.textContent = cardMessage;
 }
 
 function newCard() {
-    let card = 7;
-    sum += card;
-    renderGame(card);
+  let card = 7;
+  sum += card;
+  renderGame(card);
 }
