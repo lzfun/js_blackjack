@@ -24,4 +24,5 @@ button {
     font-weight: bold;
     border: none;
     border-radius: 2px;
+    margin-bottom: 5px; /* Get space between buttons when they are displayed vertically */
 }
