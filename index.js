@@ -1,18 +1,17 @@
 let firstCard = 10;
 let secondCard = 4;
+let cards = [firstCard, secondCard];
 let sum = firstCard + secondCard;
 let hasBlackJack = false;
 let isAlive = true;
 let message = "";
-let cardMessage = "Cards " + firstCard + " ";
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
+let cardsEl = document.getElementById("cards-el");
 
 // Alternative way to get element from the DOM
 // CSS selector: id - #, class - .
 // let sumEl = document.querySelector("#sum-el");
-
-let cardsEl = document.getElementById("cards-el");
 
 function startGame() {
   renderGame(secondCard);
@@ -28,14 +27,18 @@ function renderGame(cardNum) {
     message = "You're out of the game!";
     isAlive = false;
   }
+
   messageEl.textContent = message;
   sumEl.textContent = "Sum: " + sum;
-  cardMessage += " " + cardNum;
-  cardsEl.textContent = cardMessage;
+  cardsEl.textContent = "Cards";
+  for (let i = 0; i < cards.length; i++) {
+    cardsEl.textContent += " " + cards[i];
+  }
 }
 
 function newCard() {
   let card = 7;
   sum += card;
+  cards.push(card);
   renderGame(card);
 }
