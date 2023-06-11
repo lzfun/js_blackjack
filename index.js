@@ -1,13 +1,11 @@
-let firstCard = randomCard();
-let secondCard = randomCard();
-let cards = [firstCard, secondCard];
-let sum = firstCard + secondCard;
+let cards = [];
+let sum = 0;
 let hasBlackJack = false;
-let isAlive = true;
-let message = "";
-let messageEl = document.getElementById("message-el");
-let sumEl = document.getElementById("sum-el");
-let cardsEl = document.getElementById("cards-el");
+let isAlive = false;
+let message = '';
+let messageEl = document.getElementById('message-el');
+let sumEl = document.getElementById('sum-el');
+let cardsEl = document.getElementById('cards-el');
 
 // Alternative way to get element from the DOM
 // CSS selector: id - #, class - .
@@ -31,12 +29,19 @@ function randomCard() {
 }
 
 function startGame() {
-  renderGame(secondCard);
+  if (!isAlive) {
+    let firstCard = randomCard();
+    let secondCard = randomCard();
+    cards = [firstCard, secondCard];
+    sum = firstCard + secondCard;
+    isAlive = true;
+    renderGame();
+  }
 }
 
-function renderGame(cardNum) {
+function renderGame() {
   if (sum <= 20) {
-    message = "Do you want to draw a new card?";
+    message = 'Do you want to draw a new card?';
   } else if (sum === 21) {
     message = "Wohoo! You've got Blackjack!";
     hasBlackJack = true;
@@ -46,17 +51,19 @@ function renderGame(cardNum) {
   }
 
   messageEl.textContent = message;
-  sumEl.textContent = "Sum: " + sum;
+  sumEl.textContent = 'Sum: ' + sum;
 
-  cardsEl.textContent = "Cards";
+  cardsEl.textContent = 'Cards';
   for (let i = 0; i < cards.length; i++) {
-    cardsEl.textContent += " " + cards[i];
+    cardsEl.textContent += ' ' + cards[i];
   }
 }
 
 function newCard() {
-  let card = randomCard();
-  sum += card;
-  cards.push(card);
-  renderGame(card);
+  if (isAlive && !hasBlackJack) {
+    let card = randomCard();
+    sum += card;
+    cards.push(card);
+    renderGame();
+  }
 }
