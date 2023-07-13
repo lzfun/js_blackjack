@@ -1,11 +1,21 @@
+let player = {
+  name: 'LZ',
+  chips: 50,
+};
 let cards = [];
 let sum = 0;
 let hasBlackJack = false;
 let isAlive = false;
 let message = '';
+
 let messageEl = document.getElementById('message-el');
 let sumEl = document.getElementById('sum-el');
 let cardsEl = document.getElementById('cards-el');
+let playerEl = document.getElementById('player-el');
+
+// TODO: 1. allow user to enter their starting chip
+// 2. make chip change as the player win or lose
+playerEl.textContent = 'Player ' + player.name + ': $' + player.chips;
 
 // Alternative way to get element from the DOM
 // CSS selector: id - #, class - .
